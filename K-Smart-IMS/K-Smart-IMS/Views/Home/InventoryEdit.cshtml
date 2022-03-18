@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Current Inventory | Tables";
+}
+
+<div class="text-left">
+    <h2>Tables | Current Inventory</h2>
+
+
+
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Quantity</th>
+                <th>Order</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr>
+                <td>97
+                <form asp-controller="Edit Tables" asp-action="Index">
+                    <p>
+                     <input type="text" name="SearchString" />
+                     <input type="submit" value="Change Quantity" />
+                        </p>
+                </form>
+
+                </td>
+
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/InventoryEdit'">Add to Cart</button></td>
+
+
+
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
