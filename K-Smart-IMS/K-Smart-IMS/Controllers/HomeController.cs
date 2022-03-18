@@ -28,6 +28,51 @@ namespace K_Smart_IMS.Controllers
             return View();
         }
 
+        public IActionResult CurrentInventory()
+        {
+            return View();
+        }
+        public IActionResult BrowseProducts()
+        {
+            return View();
+        }
+        public IActionResult InventoryEdit()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult OrderConfirmation()
+        {
+            return View();
+        }
+        public IActionResult OrderHistory()
+        {
+            return View();
+        }
+        public IActionResult ProductArrival()
+        {
+            return View();
+        }
+        public IActionResult ProductInfo()
+        {
+            return View();
+        }
+        public IActionResult Users()
+        {
+            return View();
+        }
+        public IActionResult ViewCart()
+        {
+            return View();
+        }
+        public IActionResult ViewOrder()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
