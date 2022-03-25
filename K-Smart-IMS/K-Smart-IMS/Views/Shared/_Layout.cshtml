@@ -69,11 +69,6 @@
                     else
                     {
                         var action = ViewContext.RouteData.Values["action"]?.ToString();
-
-                        <li class="nav-item">
-                            <a asp-action="Login" asp-controller="Account"
-                               asp-area="" class="btn btn-outline-light">Log In</a>
-                        </li>
                     }
 
                     <li class="nav-item @Nav.Active("Admin", current)">

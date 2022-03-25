@@ -1,0 +1,65 @@
+﻿@{
+}
+<h1>Your Cart</h1>
+
+<form asp-action="Clear" method="post">
+    <ul class="list-group mb-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Subtotal: Placeholder!
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a class="btn btn-primary">Checkout</a>
+                        <button type="submit" class="btn btn-primary">Clear Cart</button>
+                        <a
+                           >Back to Browsing Products</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+    </ul>
+</form>
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>
+                        <a>Link to item here
+                        </a>
+                    </td>
+                    <td>
+                            <p>
+                                <a>Link to category here
+                                </a>
+                            </p>
+                        
+                    </td>
+                    <td>Price here</td>
+                    <td>Quantity here</td>
+                    <td>Subtotal Here</td>
+                    <td>
+                        <div class="float-right">
+                            <a 
+                               class="btn btn-primary">Edit</a>
+                            <button type="submit" name="id" value=""
+                                    class="btn btn-primary">Remove</button>
+                        </div>
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+</form>

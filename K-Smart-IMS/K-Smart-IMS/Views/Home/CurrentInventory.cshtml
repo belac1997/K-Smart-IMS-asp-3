@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Current Inventory";
+}
+
+<h2>Current Inventory</h2>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>Name
+                <form asp-controller="Inventory" asp-action="Index">
+                         <input type="text" name="SearchString" />
+                         <input type="submit" value="Search" />
+                </form>
+            </th>                
+            <th>Category
+                <select name="categories" id="categories">
+                    <option value="All">All</option>
+                    <option value="appliances">Appliances</option>
+                     <option value="office">Office Supplies</option>
+                     <option value="bathroom">Bathroom</option>
+                     <option value="tools">Tools</option>
+                </select>
+            </th>
+            <th>Manufacturer
+                <select name="categories" id="categories">
+                    <option value="All">All</option>
+                    <option value="appliances">Appliances</option>
+                     <option value="office">Office Supplies</option>
+                     <option value="bathroom">Bathroom</option>
+                     <option value="tools">Tools</option>
+                </select>
+            </th>
+            <th>Quantity</th>
+            <th>Edit</th>
+        </tr>
+    </thread>
+    <tbody>
+        <tr>
+            <td>Tables</td>
+            <td>Category</td>
+            <td>Manufacturer</td>
+            <td>97</td>
+            <td><button type="button" class="btn btn-primary" onclick="location.href='/InventoryEdit'">Edit</button></td>
+        </tr>
+        <tr>
+            <td>Plates</td>
+            <td>Category</td>
+            <td>Manufacturer</td>
+            <td>120</td>
+            <td><button type="button" class="btn btn-primary" onclick="location.href='/InventoryEdit'">Edit</button></td>
+        </tr>
+        <tr>
+            <td>Chairs</td>
+            <td>Category</td>
+            <td>Manufacturer</td>
+            <td>203</td>
+            <td><button type="button" class="btn btn-primary" onclick="location.href='/InventoryEdit'">Edit</button></td>
+        </tr>
+        <tr>
+            <td>Cups</td>
+            <td>Category</td>
+            <td>Manufacturer</td>
+            <td>156</td>
+            <td><button type="button" class="btn btn-primary" onclick="location.href='/InventoryEdit'">Edit</button></td>
+        </tr>
+    </tbody>
+ </table>
+
+
+

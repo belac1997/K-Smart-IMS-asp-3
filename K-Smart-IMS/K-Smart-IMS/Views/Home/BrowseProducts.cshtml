@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Browse Products";
+}
+
+<h2>Browse Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name
+                 <form asp-controller="Inventory" asp-action="Index">
+                      <input type="text" name="SearchString" />
+                      <input type="submit" value="Search" />
+                 </form>
+            </th>
+            <th>Category
+                 <select name="categories" id="categories">
+                    <option value="All">All</option>
+                    <option value="appliances">Appliances</option>
+                     <option value="office">Office Supplies</option>
+                     <option value="bathroom">Bathroom</option>
+                     <option value="tools">Tools</option>
+                </select>
+            </th>
+            <th>MSRP</th>
+            <th>Manufacturer
+                <select name="categories" id="categories">
+                    <option value="All">All</option>
+                    <option value="appliances">Appliances</option>
+                     <option value="office">Office Supplies</option>
+                     <option value="bathroom">Bathroom</option>
+                     <option value="tools">Tools</option>
+                </select>
+            </th>
+            <th>Info</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>Turbowash Ultra Pantsoaker 3000</td>
+                <td>Appliances</td>
+                <td>$749.99</td>
+                <td>Whirlpool</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+            <tr>
+                <td>0 Degree Kelvin Instant Minifridge</td>
+                <td>Appliances</td>
+                <td>$1,299.99</td>
+                <td>Samsung</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Clippy's Mega Funtime Paperclip Dispenser</td>
+                <td>Office Supplies</td>
+                <td>$49.99</td>
+                <td>Microsoft ft. Supreme</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+            <tr>
+                <td>The Alcoholic Programmer's Desktop Decanter</td>
+                <td>Office Supplies</td>
+                <td>$64.99</td>
+                <td>Hígado Graso INC.</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+            <tr>
+                <td>A Pencil</td>
+                <td>Office Supplies</td>
+                <td>$0.99</td>
+                <td>Ticonderoga</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Lifetime Supply of Toilet Paper, 2-Ply</td>
+                <td>Bathroom</td>
+                <td>$5249.99</td>
+                <td>Dunder Mifflin Paper Co.</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='/ProductInfo'">Edit</button></td>
+            </tr>
+    </tbody>
+</table>
