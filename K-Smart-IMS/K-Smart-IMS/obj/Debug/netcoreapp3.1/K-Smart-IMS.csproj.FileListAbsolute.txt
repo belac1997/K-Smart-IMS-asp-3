@@ -63,3 +63,5 @@ C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netc
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Item\List.cshtml.g.cs
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\Details.cshtml.g.cs
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\List.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
