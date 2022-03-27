@@ -1,0 +1,81 @@
+﻿@model CartViewModel
+
+@{
+    ViewData["Title"] = " | Cart";
+}
+
+<h1>Your Cart</h1>
+
+
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Vendor(s)</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.List)  {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Item"
+                           asp-route-id="@item.Item.Id"
+                           asp-route-slug="@item.Item.Name.Slug()">
+                            @item.Item.Name
+                        </a>
+                    </td>
+                    <td>
+                        @foreach (var keyValuePair in item.Item.Vendors) {
+                            <p>
+                                <a asp-action="Details" asp-controller="Vendor"
+                                   asp-route-id="@keyValuePair.Key"
+                                   asp-route-slug="@keyValuePair.Value.Slug()">
+                                    @keyValuePair.Value
+                                </a>
+                            </p>
+                        }
+                    </td>
+                    <td>@item.Item.Price.ToString("c")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Subtotal.ToString("c")</td>
+                    <td>
+                        <div class="float-right">
+                            <a asp-action="Edit" asp-controller="Cart"
+                               asp-route-id="@item.Item.Id"
+                               asp-route-slug="@item.Item.Name.Slug()"
+                               class="btn btn-primary">Edit</a>
+                            <button type="submit" name="id" value="@item.Item.Id"
+                                    class="btn btn-primary">Remove</button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
+<form asp-action="Clear" method="post">
+    <ul class="list-group mb-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Subtotal: @Model.Subtotal.ToString("c")
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a asp-action="Checkout" class="btn btn-primary">Checkout (WIP)</a>
+                        <button type="submit" class="btn btn-primary">Clear Cart</button>
+                        <a asp-action="List" asp-controller="Item"
+                           asp-all-route-data="@Model.ItemGridRoute">Back to Item Catalog</a>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</form>

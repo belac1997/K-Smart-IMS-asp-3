@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+//we should probably add a quantity of this particular item to this class. Or maybe we create an entirely separate inventory class
+
 namespace K_Smart_IMS.Models
 {
     public partial class Item
@@ -19,6 +21,7 @@ namespace K_Smart_IMS.Models
         public string CategoryId { get; set; }
 
         public Category Category { get; set; }
+
         public ICollection<ItemVendor> ItemVendors { get; set; }
     }
 }
