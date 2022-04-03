@@ -61,5 +61,32 @@ namespace K_Smart_IMS.Controllers
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        [HttpPost]
+        public RedirectToActionResult AddOne(int id)
+        {
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            Item.Qty += 1;
+            data.Save();
+            return RedirectToAction("Details", Item);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult MinusOne(int id)
+        {
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            if (Item.Qty > 0)
+            {
+                Item.Qty -= 1;
+                data.Save();
+            }
+            return RedirectToAction("Details", Item);
+        }
     }   
-}
+} 

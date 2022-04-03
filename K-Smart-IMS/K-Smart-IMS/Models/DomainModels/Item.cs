@@ -12,6 +12,8 @@ namespace K_Smart_IMS.Models
         [StringLength(200)]
         public string Name { get; set; }
 
+        public int Qty { get; set; }
+
         [Range(0.0, 1000000.0, ErrorMessage = "Price must be more than 0.")]
         public double Price { get; set; }
 

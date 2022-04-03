@@ -61,6 +61,9 @@ namespace K_Smart_IMS.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -73,7 +76,8 @@ namespace K_Smart_IMS.Migrations
                             Id = 1,
                             CategoryId = "Cleaning",
                             Name = "Dawn Dish Soap",
-                            Price = 15.0
+                            Price = 15.0,
+                            Qty = 3
                         });
                 });
 

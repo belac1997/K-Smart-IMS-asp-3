@@ -8,7 +8,7 @@ namespace K_Smart_IMS.Models
         public void Configure(EntityTypeBuilder<Item> entity)
         {
             entity.HasData(
-                new Item { Id = 1, Name = "Dawn Dish Soap", CategoryId = "Cleaning", Price = 15.00 }
+                new Item { Id = 1, Name = "Dawn Dish Soap", CategoryId = "Cleaning", Price = 15.00, Qty = 3 }
             );
         }
     }
