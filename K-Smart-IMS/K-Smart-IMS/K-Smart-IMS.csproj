@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220318062124_Initial.cs" />
+    <Compile Remove="Migrations\20220318062124_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\Cart\" />
   </ItemGroup>
 

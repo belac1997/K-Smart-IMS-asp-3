@@ -61,5 +61,11 @@ namespace K_Smart_IMS.Controllers
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        [HttpPost]
+        public IActionResult Edit(Item)
+        {
+            Item.Qty.set();
+        }
     }   
 }
