@@ -63,9 +63,30 @@ namespace K_Smart_IMS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Item)
+        public RedirectToActionResult AddOne(int id)
         {
-            Item.Qty.set();
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            Item.Qty += 1;
+            data.Save();
+            return RedirectToAction("Details", Item);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult MinusOne(int id)
+        {
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            if (Item.Qty > 0)
+            {
+                Item.Qty -= 1;
+                data.Save();
+            }
+            return RedirectToAction("Details", Item);
         }
     }   
-}
+} 
