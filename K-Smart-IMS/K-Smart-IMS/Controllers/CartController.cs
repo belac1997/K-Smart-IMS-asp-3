@@ -6,11 +6,13 @@ namespace K_Smart_IMS.Controllers
 {
     [Authorize]
     public class CartController : Controller
-    {
+    {  
+        //creates respository object of type Item.cs
         private Repository<Item> data { get; set; }
+        //context for the repository object
         public CartController(InventoryContext ctx) => data = new Repository<Item>(ctx);
 
-
+        //load the cart object with data
         private Cart GetCart()
         {
             var cart = new Cart(HttpContext);
@@ -22,7 +24,8 @@ namespace K_Smart_IMS.Controllers
         {
             var cart = GetCart();
             var builder = new ItemsGridBuilder(HttpContext.Session);
-
+            
+            //setting up what variables can be seen in the view model
             var vm = new CartViewModel {
                 List = cart.List,
                 Subtotal = cart.Subtotal,
@@ -30,7 +33,9 @@ namespace K_Smart_IMS.Controllers
             };
             return View(vm);
         }
+        
 
+        //helps load grid modeling for the cart system
         [HttpPost]
         public RedirectToActionResult Add(int id)
         {
@@ -61,6 +66,8 @@ namespace K_Smart_IMS.Controllers
         }
 
         [HttpPost]
+        
+        //removes item from cart based on id and sends temp data for message banner
         public RedirectToActionResult Remove(int id)
         {
             Cart cart = GetCart();
@@ -71,7 +78,8 @@ namespace K_Smart_IMS.Controllers
             TempData["message"] = $"{item.Item.Name} was removed from cart.";
             return RedirectToAction("Index");
         }
-                
+        
+        //clears cart of all objects
         [HttpPost]
         public RedirectToActionResult Clear()
         {
