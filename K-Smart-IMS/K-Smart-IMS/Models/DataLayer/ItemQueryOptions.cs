@@ -11,12 +11,12 @@ namespace K_Smart_IMS.Models
                 Where = b => b.CategoryId == builder.CurrentRoute.CategoryFilter;
             }
             if (builder.IsFilterByPrice) {
-                if (builder.CurrentRoute.PriceFilter == "under7")
-                    Where = b => b.Price < 7;
-                else if (builder.CurrentRoute.PriceFilter == "7to14")
-                    Where = b => b.Price >= 7 && b.Price <= 14;
+                if (builder.CurrentRoute.PriceFilter == "under15")
+                    Where = b => b.Price < 15;
+                else if (builder.CurrentRoute.PriceFilter == "15to30")
+                    Where = b => b.Price >= 15 && b.Price <= 30;
                 else
-                    Where = b => b.Price > 14;
+                    Where = b => b.Price > 30;
             }
             if (builder.IsFilterByVendor) {
                 int id = Int32.Parse(builder.CurrentRoute.VendorFilter);

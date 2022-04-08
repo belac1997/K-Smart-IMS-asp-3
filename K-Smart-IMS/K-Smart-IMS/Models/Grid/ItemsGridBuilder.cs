@@ -28,7 +28,7 @@ namespace K_Smart_IMS.Models
             else
             {
                 routes.VendorFilter = FilterPrefix.Vendor + filter[0]
-                    + "-"; //+ Vendor.Name.Slug();
+                    + "-" + Vendor.Name.Slug();
             }
             routes.CategoryFilter = FilterPrefix.Category + filter[1];
             routes.PriceFilter = FilterPrefix.Price + filter[2];
