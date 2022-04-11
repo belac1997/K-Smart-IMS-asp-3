@@ -1,0 +1,51 @@
+﻿@model CartViewModel
+
+@{
+    ViewData["Title"] = " | Order Archive";
+}
+
+<h1>Order Archive</h1>
+
+
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Vendor(s)</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.List)  {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Item"
+                           asp-route-id="@item.Item.Id"
+                           asp-route-slug="@item.Item.Name.Slug()">
+                            @item.Item.Name
+                        </a>
+                    </td>
+                    <td>
+                        @foreach (var keyValuePair in item.Item.Vendors) {
+                            <p>
+                                <a asp-action="Details" asp-controller="Vendor"
+                                   asp-route-id="@keyValuePair.Key"
+                                   asp-route-slug="@keyValuePair.Value.Slug()">
+                                    @keyValuePair.Value
+                                </a>
+                            </p>
+                        }
+                    </td>
+                    <td>@item.Item.Price.ToString("c")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Subtotal.ToString("c")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
