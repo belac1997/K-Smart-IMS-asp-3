@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7KppwcXDoWZPedZT4e/eWr1uu1UKQBga0WfRfDtpOCwAJULsKvNjWvDYR13thHqp7BghKEYsBZpPuucvX4zM+w==",
+  "dgSpecHash": "AFOXlMuinaAtD8nDsBkFBed+l0nE9tHMYIiIfYGenb+/lGsRNt2tPoy3BpWyS4rw/5yzKha3HLOZxe6vXxPLDw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
+  "projectFilePath": "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kingd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.0\\microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
     "C:\\Users\\kingd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.0\\microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
