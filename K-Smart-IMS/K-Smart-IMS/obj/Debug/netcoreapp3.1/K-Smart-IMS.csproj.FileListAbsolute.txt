@@ -67,3 +67,9 @@ C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netc
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Edit.cshtml.g.cs
 C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Add.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs

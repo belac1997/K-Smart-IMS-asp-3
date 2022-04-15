@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using K_Smart_IMS.Models;
 
+/*Effectively a login controller that leverages the aspnetcore identity class to create and utilize user authorization
+ * Contributed by Cody Tran
+ */
+
 namespace K_Smart_IMS.Controllers
 {
     public class AccountController : Controller
@@ -29,7 +33,7 @@ namespace K_Smart_IMS.Controllers
 
             if (ModelState.IsValid)
             {
-                //creation of user account here should have password hashing
+                //creation of user account here should have password hashing if you can check on this Will
                 var user = new K_Smart_IMS.Models.User { UserName = model.Username };
                 var result = await userManager.CreateAsync(user, model.Password);
 

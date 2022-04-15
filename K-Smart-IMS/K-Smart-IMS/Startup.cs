@@ -67,7 +67,7 @@ namespace K_Smart_IMS
                     endpoints.MapAreaControllerRoute(
                         name: "admin",
                         areaName: "Admin",
-                        pattern: "Admin/{controller=Item}/{action=Index}/{id?}");
+                        pattern: "Admin/{controller=User}/{action=Index}/{id?}");
 
                     //route for paging, sorting, and filtering
                     endpoints.MapControllerRoute(
@@ -84,7 +84,7 @@ namespace K_Smart_IMS
                         name: "default",
                         pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
                 });
-
-            }
+             InventoryContext.CreateAdminUser(app.ApplicationServices).Wait();  
         }
+    }
     }

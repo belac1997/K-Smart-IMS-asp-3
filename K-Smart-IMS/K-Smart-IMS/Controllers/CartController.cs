@@ -2,9 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using K_Smart_IMS.Models;
 
+
+/*Cart controller that leverages the aspnetcore identity class to create and utilize user authorization
+ * Used in tracking the item data and leveraged by Caleb's order tracking system
+ * Contributed by Cody Tran
+ */
 namespace K_Smart_IMS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Manager")]
     public class CartController : Controller
     {  
         //creates respository object of type Item.cs

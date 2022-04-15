@@ -1,0 +1,108 @@
+﻿@{
+    //creates cart session for display
+    var cart = new K_Smart_IMS.Models.Cart(Context);
+
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+        ViewContext.RouteData.Values["controller"]?.ToString();
+}
+<!--Injects login into html at beginning of page -->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<K_Smart_IMS.Models.User> signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - K-Smart IMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
+                    aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Home", current)">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">
+                            <span class="fas fa-home"></span>&nbsp;Home
+                        </a>
+                    </li>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Item", current)">
+                            <a class="nav-link" asp-action="List" asp-controller="Item" asp-area="">
+                                <span class="fas fa-shopping-cart"></span>&nbsp;Items
+                            </a>
+                        </li>
+                        <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Vendor", current)">
+                            <a class="nav-link" asp-action="List" asp-controller="Vendor" asp-area="">
+                                <span class="fas fa-cog"></span>&nbsp;Vendors
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        //allows signed in user to view logout and name
+                        <li class="nav-item">
+                            <form method="post" asp-action="LogOut" asp-controller="Account"
+                                  asp-area="">
+                                <input type="submit" value="Log Out"
+                                       class="btn btn-outline-light" />
+                                <span class="text-light">@User.Identity.Name</span>
+                            </form>
+                        </li>
+                        <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Cart", current)">
+                            <a class="nav-link" asp-action="Index" asp-controller="Cart" asp-area="">
+                                <span class="fas fa-shopping-cart"></span>&nbsp;Cart
+                                <!--Displays the amount of items within the cart-->
+                                <span class="badge badge-light">@cart.Count</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                        //if anon user this will show, but we should adjust this so only admins can create users
+                        <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Register", action)">
+                            <a asp-action="Register" asp-controller="Account"
+                               asp-area="" class="nav-link">
+                                <span class="fas fa-edit"></span>&nbsp;Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Login" asp-controller="Account"
+                               asp-area="" class="btn btn-outline-light">Log In</a>
+                        </li>
+                    }
+
+                    <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Admin", current)">
+                        <a class="nav-link" asp-action="Index" asp-controller="Item" asp-area="Admin">
+                            <span class="fas fa-cog"></span>&nbsp;Admin (WIP)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <!--Uses tempdata class to display a message, kinda like a toast message in mobile app programming?-->
+            @if (TempData.Keys.Contains("message"))
+            {
+                <h4 class="bg-info text-center text-white p-2">@TempData["message"]</h4>
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+</body>
+</html>
