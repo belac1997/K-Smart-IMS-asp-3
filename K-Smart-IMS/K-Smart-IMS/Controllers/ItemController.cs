@@ -64,7 +64,7 @@ namespace K_Smart_IMS.Controllers
 
         [HttpPost]
         public RedirectToActionResult AddOne(int id)
-        {
+        { //This method increases an item's inventory count by one
             var Item = data.Items.Get(new QueryOptions<Item>
             {
                 Where = b => b.Id == id
@@ -76,7 +76,7 @@ namespace K_Smart_IMS.Controllers
 
         [HttpPost]
         public RedirectToActionResult MinusOne(int id)
-        {
+        {  //This method decreases an item's inventory count by one
             var Item = data.Items.Get(new QueryOptions<Item>
             {
                 Where = b => b.Id == id
