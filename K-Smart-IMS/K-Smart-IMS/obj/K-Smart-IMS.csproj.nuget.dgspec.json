@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {}
+    "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {
+    "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
+        "projectUniqueName": "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
         "projectName": "K-Smart-IMS",
-        "projectPath": "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
+        "projectPath": "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
         "packagesPath": "C:\\Users\\kingd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kingd\\source\\repos\\ksmart-2\\K-Smart-IMS\\K-Smart-IMS\\obj\\",
+        "outputPath": "C:\\Users\\kingd\\source\\repos\\ksmart-again\\K-Smart-IMS\\K-Smart-IMS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
