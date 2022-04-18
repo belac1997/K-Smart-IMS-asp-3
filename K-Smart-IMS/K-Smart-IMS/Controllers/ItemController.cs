@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace K_Smart_IMS.Controllers
 {
-    [Authorize(Roles = "Admin,Manager")]
     public class ItemController : Controller
     {
         private InventoryUnitOfWork data { get; set; }
