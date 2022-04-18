@@ -15,9 +15,9 @@ namespace K_Smart_IMS.Models
         public IEnumerable<Category> Categories { get; set; }
         public Dictionary<string, string> Prices =>
             new Dictionary<string, string> {
-                { "under7", "Under $7" },
-                { "7to14", "$7 to $14" },
-                { "over14", "Over $14" }
+                { "under15", "Under $15" },
+                { "15to30", "$15 to $30" },
+                { "over30", "Over $30" }
             };
     }
 }

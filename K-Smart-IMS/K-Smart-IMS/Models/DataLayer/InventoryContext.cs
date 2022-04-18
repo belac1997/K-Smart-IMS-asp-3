@@ -18,6 +18,7 @@ namespace K_Smart_IMS.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemVendor> ItemVendors { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<OrderArchive> OrderArchives { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
