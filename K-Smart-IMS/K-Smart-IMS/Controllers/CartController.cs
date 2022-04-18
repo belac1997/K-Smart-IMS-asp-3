@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using K_Smart_IMS.Models;
+using System.Linq;
 
-
-/*Cart controller that leverages the aspnetcore identity class to create and utilize user authorization
- * Used in tracking the item data and leveraged by Caleb's order tracking system
- * Contributed by Cody Tran
- */
 namespace K_Smart_IMS.Controllers
 {
-    [Authorize(Roles = "Admin,Manager")]
+    [Authorize]
     public class CartController : Controller
-    {  
-        //creates respository object of type Item.cs
+    {
+        private InventoryContext context { get; set; }
         private Repository<Item> data { get; set; }
-        //context for the repository object
-        public CartController(InventoryContext ctx) => data = new Repository<Item>(ctx);
+        public CartController(InventoryContext ctx)
+            {
+            data = new Repository<Item>(ctx);
+            context = ctx;
+        }
 
-        //load the cart object with data
+
+
+
         private Cart GetCart()
         {
             var cart = new Cart(HttpContext);
@@ -27,10 +28,11 @@ namespace K_Smart_IMS.Controllers
 
         public ViewResult Index() 
         {
+
+            
             var cart = GetCart();
             var builder = new ItemsGridBuilder(HttpContext.Session);
-            
-            //setting up what variables can be seen in the view model
+
             var vm = new CartViewModel {
                 List = cart.List,
                 Subtotal = cart.Subtotal,
@@ -38,9 +40,14 @@ namespace K_Smart_IMS.Controllers
             };
             return View(vm);
         }
-        
 
-        //helps load grid modeling for the cart system
+        public ViewResult OrderArchive()
+        {
+            var orders = context.OrderArchives.ToList();
+
+            return View(orders);
+        }
+
         [HttpPost]
         public RedirectToActionResult Add(int id)
         {
@@ -70,9 +77,19 @@ namespace K_Smart_IMS.Controllers
             return RedirectToAction("List", "Item", builder.CurrentRoute);
         }
 
+        public RedirectToActionResult Archive(Cart cart, OrderArchive order)
+        {
+            var result = string.Join(",", cart.List);
+
+            order.OrderList = result;
+            order.PriceTotal = cart.Subtotal;
+            
+            context.OrderArchives.Add(order);
+            return RedirectToAction("Index");
+        }
+
+
         [HttpPost]
-        
-        //removes item from cart based on id and sends temp data for message banner
         public RedirectToActionResult Remove(int id)
         {
             Cart cart = GetCart();
@@ -83,8 +100,7 @@ namespace K_Smart_IMS.Controllers
             TempData["message"] = $"{item.Item.Name} was removed from cart.";
             return RedirectToAction("Index");
         }
-        
-        //clears cart of all objects
+                
         [HttpPost]
         public RedirectToActionResult Clear()
         {
