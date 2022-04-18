@@ -2,7 +2,6 @@
 
 namespace K_Smart_IMS.Models
 {
-    //this entire class is basically a meme, it is just an item with a new variable called quantity
     public class CartItem
     {
         public ItemDTO Item { get; set; }

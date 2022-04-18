@@ -10,12 +10,9 @@ namespace K_Smart_IMS.Models
     {
         public int Id { get; set; } //primary key
 
-        //I don't think we'll have any logic for creating items by an admin but this is nice if we did
         [Required(ErrorMessage = "Please enter a name for the item.")]
         [StringLength(200)]
         public string Name { get; set; }
-
-        public int Qty { get; set; }
 
         [Range(0.0, 1000000.0, ErrorMessage = "Price must be more than 0.")]
         public double Price { get; set; }

@@ -7,5 +7,6 @@ namespace K_Smart_IMS.Models
         public IEnumerable<CartItem> List { get; set; }
         public double Subtotal { get; set; }
         public RouteDictionary ItemGridRoute { get; set; }
+
     }
 }
