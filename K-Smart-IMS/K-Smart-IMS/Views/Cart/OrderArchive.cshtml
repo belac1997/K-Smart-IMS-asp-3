@@ -1,0 +1,38 @@
+﻿@model List<OrderArchive>
+
+@{
+    ViewData["Title"] = " | Order Archive";
+}
+
+<h1>Order Archive</h1>
+
+
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Order Number</th>
+                <th>Items</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orders in Model)  {
+                <tr>
+                    <td>
+                        @orders.OrderArchiveId
+                    </td>
+                    <td>
+                        @orders.OrderList
+                    </td>
+                    <td>
+                        @orders.PriceTotal
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
