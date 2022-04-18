@@ -1,12 +1,13 @@
 ﻿@{
-    // get cart from session
-    //var cart = new Cart(Context);
+    //creates cart session for display
+    var cart = new Cart(Context);
 
-    // use current controller or area to determine if tab is active
     var current = ViewContext.RouteData.Values["area"]?.ToString() ??
         ViewContext.RouteData.Values["controller"]?.ToString();
 }
-
+<!--Injects login into html at beginning of page -->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,71 +32,77 @@
                             <span class="fas fa-home"></span>&nbsp;Home
                         </a>
                     </li>
-                    <li class="nav-item @Nav.Active("Item", current)">
-                        <a class="nav-link" asp-action="List" asp-controller="Item" asp-area="">
-                            <span class="fas fa-book-open"></span>&nbsp;Items
-                        </a>
-                    </li>
-                    <li class="nav-item @Nav.Active("Vendor", current)">
-                        <a class="nav-link" asp-action="List" asp-controller="Vendor" asp-area="">
-                            <span class="fas fa-feather-alt"></span>&nbsp;Vendors
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item @Nav.Active("Cart", current)">
-                        <a class="nav-link" asp-action="Index" asp-controller="Cart" asp-area="">
-                            <span class="fas fa-shopping-cart"></span>&nbsp;Cart
-                            <span class="badge badge-light">#</span>
-                        </a>
-                    </li>
-
-                    <!-- Login buttons and links -->
-                    @using Microsoft.AspNetCore.Identity
-                    @inject SignInManager<User> signInManager
-
                     @if (signInManager.IsSignedIn(User))
                     {
-                        // signed-in user - Log Out button and username
-                        <li class="nav-item">
-                            <form method="post" asp-action="LogOut" asp-controller="Account"
-                                  asp-area="">
-                                <input type="submit" value="Log Out"
-                                       class="btn btn-outline-light" />
-                                <span class="text-light">@User.Identity.Name</span>
-                            </form>
-                        </li>
-                    }
-                    else
-                    {
-                        var action = ViewContext.RouteData.Values["action"]?.ToString();
-
-                        // anonymous user - Register link and Log In button
-                        <li class="nav-item @Nav.Active("Register", action)">
-                            <a asp-action="Register" asp-controller="Account"
-                               asp-area="" class="nav-link">
-                                <span class="fas fa-edit"></span>&nbsp;Register
+                        <li class="nav-item @Nav.Active("Item", current)">
+                            <a class="nav-link" asp-action="List" asp-controller="Item" asp-area="">
+                                <span class="fas fa-shopping-cart"></span>&nbsp;Items
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-action="Login" asp-controller="Account"
-                               asp-area="" class="btn btn-outline-light">Log In</a>
+                        <li class="nav-item @Nav.Active("Vendor", current)">
+                            <a class="nav-link" asp-action="List" asp-controller="Vendor" asp-area="">
+                                <span class="fas fa-cog"></span>&nbsp;Vendors
+                            </a>
                         </li>
                     }
+                    </ul>
+                
+                    <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item @Nav.Active("Admin", current)">
-                        <a class="nav-link" asp-action="Index" asp-controller="Item" asp-area="Admin">
-                            <span class="fas fa-cog"></span>&nbsp;Admin (WIP)
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            //allows signed in user to view logout and name
+                            <li class="nav-item">
+                                <form method="post" asp-action="LogOut" asp-controller="Account"
+                                      asp-area="">
+                                    <input type="submit" value="Log Out"
+                                           class="btn btn-outline-light" />
+                                    <span class="text-light">@User.Identity.Name</span>
+                                </form>
+                            </li>
+                            <li class="nav-item @Nav.Active("Cart", current)">
+                                <a class="nav-link" asp-action="Index" asp-controller="Cart" asp-area="">
+                                    <span class="fas fa-shopping-cart"></span>&nbsp;Cart
+                                    <!--Displays the amount of items within the cart-->
+                                    <span class="badge badge-light">@cart.Count</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            var action = ViewContext.RouteData.Values["action"]?.ToString();
 
-        <main>
-            @RenderBody()
-        </main>
-    </div>
+                            //if anon user this will show, but we should adjust this so only admins can create users
+                            <li class="nav-item @Nav.Active("Register", action)">
+                                <a asp-action="Register" asp-controller="Account"
+                                   asp-area="" class="nav-link">
+                                    <span class="fas fa-edit"></span>&nbsp;Register
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account"
+                                   asp-area="" class="btn btn-outline-light">Log In</a>
+                            </li>
+                        }
 
-</body>
+                        <li class="nav-item @Nav.Active("Admin", current)">
+                            <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
+                                <span class="fas fa-cog"></span>&nbsp;Admin (WIP)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main>
+                <!--Uses tempdata class to display a message, kinda like a toast message in mobile app programming?-->
+                @if (TempData.Keys.Contains("message"))
+                {
+                    <h4 class="bg-info text-center text-white p-2">@TempData["message"]</h4>
+                }
+                @RenderBody()
+            </main>
+        </div>
+
+    </body>
 </html>
