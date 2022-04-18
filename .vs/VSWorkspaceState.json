@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\K-Smart-IMS",
+    "\\K-Smart-IMS\\K-Smart-IMS",
+    "\\K-Smart-IMS\\K-Smart-IMS\\Migrations"
   ],
-  "SelectedNode": "\\K-Smart-IMS.sln",
+  "SelectedNode": "\\K-Smart-IMS\\K-Smart-IMS\\Migrations",
   "PreviewInSolutionExplorer": false
 }
