@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace K_Smart_IMS.Models
 {
+    /* The meat of the project, the database context class that gets fired up in startup.cs
+     * This thing increasingly became a mess and I'm sorry it's not more modularized. I ended up seeding user
+     * data here because for some reason it was a giant pain trying to do it elsewhere
+     * Contributed by Cody Tran
+    */
     public class InventoryContext : IdentityDbContext<User>
     {
         public InventoryContext(DbContextOptions<InventoryContext> options)
@@ -18,7 +23,6 @@ namespace K_Smart_IMS.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemVendor> ItemVendors { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<OrderArchive> OrderArchives { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,18 +57,32 @@ namespace K_Smart_IMS.Models
                 serviceProvider.GetRequiredService<UserManager<User>>();
             RoleManager<IdentityRole> roleManager =
                 serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
+            //I know this looks freaking awful but at least it works, right? Ha ha..
             string username = "admin";
-            string password = "Senior Project!";
+            string manUsername = "manager";
+            string employeeUsername = "employee";
+            string password = "SFcollege123";
             string roleName = "Admin";
+            string manRoleName = "Manager";
+            string employeeRoleName = "Employee";
 
-            // if role doesn't exist, create it
+            //if role doesn't exist yet, which it won't since the DB is just being created, create this role
             if (await roleManager.FindByNameAsync(roleName) == null)
             {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
             }
 
-            // if username doesn't exist, create it and add to role
+            if (await roleManager.FindByNameAsync(manRoleName) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(manRoleName));
+            }
+
+            if (await roleManager.FindByNameAsync(employeeRoleName) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(employeeRoleName));
+            }
+
+            //if the username don't exist yet, create it
             if (await userManager.FindByNameAsync(username) == null)
             {
                 User user = new User { UserName = username };
@@ -74,7 +92,24 @@ namespace K_Smart_IMS.Models
                     await userManager.AddToRoleAsync(user, roleName);
                 }
             }
+            if (await userManager.FindByNameAsync(manUsername) == null)
+            {
+                User user = new User { UserName = manUsername };
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, manRoleName);
+                }
+            }
+            if (await userManager.FindByNameAsync(employeeUsername) == null)
+            {
+                User user = new User { UserName = employeeUsername };
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, employeeRoleName);
+                }
+            }
         }
-
     }
 }
