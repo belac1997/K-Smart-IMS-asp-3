@@ -5,6 +5,7 @@ namespace K_Smart_IMS.Migrations
 {
     public partial class Initial : Migration
     {
+        
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -224,6 +225,20 @@ namespace K_Smart_IMS.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OrderArchives",
+                columns: table => new
+                {
+                    OrderArchiveId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderList = table.Column<string>(nullable: false),
+                    PriceTotal = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderArchives", x => x.OrderArchiveId);
+                });
+
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
@@ -243,7 +258,12 @@ namespace K_Smart_IMS.Migrations
                 table: "ItemVendors",
                 columns: new[] { "ItemId", "VendorId" },
                 values: new object[] { 1, 1 });
-
+            
+            migrationBuilder.InsertData(                
+                table: "OrderArchives",
+                columns: new[] { "OrderArchiveId", "OrderList", "PriceTotal" },
+                values: new object[] { 1, "Name, Quantity, Price:", 100.03 });
+                
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -292,6 +312,11 @@ namespace K_Smart_IMS.Migrations
                 name: "IX_ItemVendors_VendorId",
                 table: "ItemVendors",
                 column: "VendorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderArchives_OrderArchiveId",
+                table: "OrderArchives",
+                column: "OrderArchiveId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -328,6 +353,9 @@ namespace K_Smart_IMS.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "OrderArchives");
         }
     }
 }
