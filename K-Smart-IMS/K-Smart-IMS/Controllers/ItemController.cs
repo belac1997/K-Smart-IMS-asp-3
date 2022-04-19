@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using K_Smart_IMS.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace K_Smart_IMS.Controllers
 {
+    [Authorize(Roles = "Admin,Manager")]
     public class ItemController : Controller
     {
         private InventoryUnitOfWork data { get; set; }
@@ -61,5 +63,32 @@ namespace K_Smart_IMS.Controllers
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        [HttpPost]
+        public RedirectToActionResult AddOne(int id)
+        { //This method increases an item's inventory count by one
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            Item.Qty += 1;
+            data.Save();
+            return RedirectToAction("Details", Item);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult MinusOne(int id)
+        {  //This method decreases an item's inventory count by one
+            var Item = data.Items.Get(new QueryOptions<Item>
+            {
+                Where = b => b.Id == id
+            });
+            if (Item.Qty > 0)
+            {
+                Item.Qty -= 1;
+                data.Save();
+            }
+            return RedirectToAction("Details", Item);
+        }
     }   
-}
+} 

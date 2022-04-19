@@ -2,6 +2,11 @@
 using K_Smart_IMS.Models;
 
 namespace K_Smart_IMS.Controllers
+
+/*Kinda silly but this controller helps list the vendors with their respective items. Could use some work on the UI end
+ * for grouping the actual items themselves more nicely
+* Contributed by Cody Tran
+*/
 {
     public class VendorController : Controller
     {

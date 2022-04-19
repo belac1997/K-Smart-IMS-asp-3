@@ -27,6 +27,14 @@
         </tr>
         <tr><td>Price:</td><td>@Model.Price.ToString("c")</td></tr>
         <tr><td>Category:</td><td>@Model.Category.Name</td></tr>
+        <tr><td>Qty. on Hand:</td><td>@Model.Qty
+            <form asp-action="AddOne" asp-controller="Item" asp-route-id="@Model.Id" method="post"> <!--Button: Increase Item Qty by 1-->
+                <button type="submit" class="btn btn-primary" style="float: right; margin: 2px;" name="id" value="@Model.Id">+</button>
+            </form>
+            <form asp-action="MinusOne" asp-controller="Item" asp-route-id="@Model.Id" method="post"> <!--Button: Decrease Item Qty by 1-->
+                <button type="submit" class="btn btn-primary" style="float: right; margin: 2px;" name="id" value="@Model.Id">-</button>
+            </form>
+        </td></tr>
     </tbody>
 </table>
 
