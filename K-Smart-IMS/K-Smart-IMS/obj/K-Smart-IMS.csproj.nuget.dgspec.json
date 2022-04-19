@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cody\\Documents\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {}
+    "C:\\Users\\kingd\\source\\repos\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cody\\Documents\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {
+    "C:\\Users\\kingd\\source\\repos\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cody\\Documents\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
+        "projectUniqueName": "C:\\Users\\kingd\\source\\repos\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
         "projectName": "K-Smart-IMS",
-        "projectPath": "C:\\Users\\Cody\\Documents\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
-        "packagesPath": "C:\\Users\\Cody\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cody\\Documents\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\obj\\",
+        "projectPath": "C:\\Users\\kingd\\source\\repos\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\K-Smart-IMS.csproj",
+        "packagesPath": "C:\\Users\\kingd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kingd\\source\\repos\\K-Smart-IMS-asp-3\\K-Smart-IMS\\K-Smart-IMS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Cody\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kingd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -73,6 +73,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.22, 3.1.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -81,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

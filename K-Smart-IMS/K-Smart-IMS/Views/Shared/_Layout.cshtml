@@ -59,15 +59,19 @@
                                            class="btn btn-outline-light" />
                                     <span class="text-light">@User.Identity.Name</span>
                                 </form>
-                            </li>
+                        </li>
+
+                        if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
                             <li class="nav-item @Nav.Active("Cart", current)">
                                 <a class="nav-link" asp-action="Index" asp-controller="Cart" asp-area="">
                                     <span class="fas fa-shopping-cart"></span>&nbsp;Cart
                                     <!--Displays the amount of items within the cart-->
-                                    <span class="badge badge-light">@cart.Count</span>
+                                            <span class="badge badge-light">@cart.Count</span>
                                 </a>
                             </li>
                         }
+                    }
                         else
                         {
                             var action = ViewContext.RouteData.Values["action"]?.ToString();
@@ -86,9 +90,13 @@
                         }
 
                         <li class="nav-item @Nav.Active("Admin", current)">
-                            <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
-                                <span class="fas fa-cog"></span>&nbsp;Admin (WIP)
-                            </a>
+                            @{
+                                if(User.IsInRole("Admin")) {
+                                <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
+                                <span class="fas fa-cog"></span>&nbsp;Admin
+                                </a>
+                                }
+                            }
                         </li>
                     </ul>
                 </div>
