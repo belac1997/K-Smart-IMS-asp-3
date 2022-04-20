@@ -149,3 +149,4 @@ C:\Users\kingd\source\repos\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\
 C:\Users\kingd\source\repos\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\K-Smart-IMS.dll
 C:\Users\kingd\source\repos\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\K-Smart-IMS.pdb
 C:\Users\kingd\source\repos\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\K-Smart-IMS.genruntimeconfig.cache
+C:\Users\Cody\Documents\K-Smart-IMS-asp-3\K-Smart-IMS\K-Smart-IMS\obj\Debug\netcoreapp3.1\Razor\Views\Cart\OrderArchive.cshtml.g.cs
