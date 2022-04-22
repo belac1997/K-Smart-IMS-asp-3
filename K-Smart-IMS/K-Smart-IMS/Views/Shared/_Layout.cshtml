@@ -34,32 +34,29 @@
                     </li>
                     @if (signInManager.IsSignedIn(User))
                     {
-                        if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-                        { 
                         <li class="nav-item @Nav.Active("Item", current)">
                             <a class="nav-link" asp-action="List" asp-controller="Item" asp-area="">
                                 <span class="fas fa-shopping-cart"></span>&nbsp;Items
                             </a>
-                        </li>   
+                        </li>
                         <li class="nav-item @Nav.Active("Vendor", current)">
                             <a class="nav-link" asp-action="List" asp-controller="Vendor" asp-area="">
                                 <span class="fas fa-cog"></span>&nbsp;Vendors
                             </a>
                         </li>
-                        }
                     }
                     </ul>
                 
-                <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">
 
-                    @if (signInManager.IsSignedIn(User))
+                        @if (signInManager.IsSignedIn(User))
                     {
                         //allows signed in user to view logout and name
                         <li class="nav-item">
                             <form method="post" asp-action="LogOut" asp-controller="Account"
-                                  asp-area="">
+                                      asp-area="">
                                 <input type="submit" value="Log Out"
-                                       class="btn btn-outline-light" />
+                                           class="btn btn-outline-light" />
                                 <span class="text-light">@User.Identity.Name</span>
                             </form>
                         </li>
@@ -69,39 +66,31 @@
                                 <a class="nav-link" asp-action="Index" asp-controller="Cart" asp-area="">
                                     <span class="fas fa-shopping-cart"></span>&nbsp;Cart
                                     <!--Displays the amount of items within the cart-->
-                                    <span class="badge badge-light">@cart.Count</span>
+                                            <span class="badge badge-light">@cart.Count</span>
                                 </a>
                             </li>
                         }
-                        if (User.IsInRole("Admin"))
+                    }
+
+                        
+                        else
                         {
-                        <li class="nav-item @K_Smart_IMS.Models.Nav.Active("Admin", current)">
-                            <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
-                                <span class="fas fa-cog"></span>&nbsp;Admin
-                            </a>
-                        </li>
+                            var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                            //if anon user this will show, but we should adjust this so only admins can create users
+                            /* No longer in use since we don't want users to be able to register their accounts themselves
+                            <li class="nav-item @Nav.Active("Register", action)">
+                                <a asp-action="Register" asp-controller="Account"
+                                   asp-area="" class="nav-link">
+                                    <span class="fas fa-edit"></span>&nbsp;Register
+                                </a>
+                            </li>
+                            */
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account"
+                                   asp-area="" class="btn btn-outline-light">Log In</a>
+                            </li>
                         }
-                    }
-
-
-                    else
-                    {
-                        var action = ViewContext.RouteData.Values["action"]?.ToString();
-
-                        //if anon user this will show, but we should adjust this so only admins can create users
-                        /* No longer in use since we don't want users to be able to register their accounts themselves
-                        <li class="nav-item @Nav.Active("Register", action)">
-                            <a asp-action="Register" asp-controller="Account"
-                               asp-area="" class="nav-link">
-                                <span class="fas fa-edit"></span>&nbsp;Register
-                            </a>
-                        </li>
-                        */
-                        <li class="nav-item">
-                            <a asp-action="Login" asp-controller="Account"
-                               asp-area="" class="btn btn-outline-light">Log In</a>
-                        </li>
-                    }
 
 
                 </ul>
